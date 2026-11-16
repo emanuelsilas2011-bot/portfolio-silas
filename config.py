@@ -18,8 +18,8 @@ SITE = dict(
     visao="",       # opcional: escreva sua visão criativa e a seção aparece sozinha
     # Contatos: e-mail e Instagram vêm do seu PDF (confira!). WhatsApp: só números com DDI, ex. 5588999999999
     email="emanuelsilas.2011@gmail.com",
-    instagram="silasdesigner",
-    whatsapp="",    # vazio = botão de WhatsApp fica oculto
+    instagram="silas.dsgn",
+    whatsapp="5588992287898",
     url="",         # endereço final do site, ex. https://seudominio.com.br (usado no compartilhamento)
 )
 

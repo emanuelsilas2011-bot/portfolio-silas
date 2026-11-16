@@ -1,0 +1,156 @@
+[
+ {
+  "file": "projects/social-01.jpg",
+  "cat": "social",
+  "title": "Contagem regressiva: 20 dias",
+  "w": 535,
+  "h": 679
+ },
+ {
+  "file": "projects/social-02.jpg",
+  "cat": "social",
+  "title": "Contagem regressiva: 30 dias",
+  "w": 542,
+  "h": 679
+ },
+ {
+  "file": "projects/social-03.jpg",
+  "cat": "social",
+  "title": "Cartaz de congresso de jovens",
+  "w": 552,
+  "h": 679
+ },
+ {
+  "file": "projects/social-04.jpg",
+  "cat": "social",
+  "title": "Camisa oficial do evento",
+  "w": 1500,
+  "h": 619
+ },
+ {
+  "file": "projects/social-05.jpg",
+  "cat": "social",
+  "title": "Programação do evento",
+  "w": 1092,
+  "h": 679
+ },
+ {
+  "file": "projects/social-06.jpg",
+  "cat": "social",
+  "title": "Post de contagem com calculadora",
+  "w": 552,
+  "h": 679
+ },
+ {
+  "file": "projects/poster-01.jpg",
+  "cat": "poster",
+  "title": "Pôster esportivo: Game Day",
+  "w": 811,
+  "h": 1015
+ },
+ {
+  "file": "projects/poster-02.jpg",
+  "cat": "poster",
+  "title": "Pôster esportivo: retrato amarelo",
+  "w": 808,
+  "h": 1015
+ },
+ {
+  "file": "projects/poster-03.jpg",
+  "cat": "poster",
+  "title": "Pôster esportivo: seleção",
+  "w": 369,
+  "h": 463
+ },
+ {
+  "file": "projects/poster-04.jpg",
+  "cat": "poster",
+  "title": "Pôster esportivo: tipografia vermelha",
+  "w": 369,
+  "h": 463
+ },
+ {
+  "file": "projects/poster-05.jpg",
+  "cat": "poster",
+  "title": "Pôster esportivo: colagem rasgada",
+  "w": 369,
+  "h": 463
+ },
+ {
+  "file": "projects/poster-06.jpg",
+  "cat": "poster",
+  "title": "Pôster esportivo: tipografia marrom",
+  "w": 369,
+  "h": 463
+ },
+ {
+  "file": "projects/poster-07.jpg",
+  "cat": "poster",
+  "title": "Pôster Focus: Black Mamba",
+  "w": 808,
+  "h": 970
+ },
+ {
+  "file": "branding/burguer-01-logo.jpg",
+  "cat": "branding",
+  "title": "Logotipo BURGUER",
+  "w": 1500,
+  "h": 424
+ },
+ {
+  "file": "branding/burguer-02-paleta.jpg",
+  "cat": "branding",
+  "title": "Paleta de cores BURGUER",
+  "w": 1500,
+  "h": 247
+ },
+ {
+  "file": "branding/burguer-03-tampas.jpg",
+  "cat": "branding",
+  "title": "Aplicação: tampas de embalagem",
+  "w": 597,
+  "h": 590
+ },
+ {
+  "file": "branding/burguer-04-caixa.jpg",
+  "cat": "branding",
+  "title": "Aplicação: caixa de lanche",
+  "w": 549,
+  "h": 590
+ },
+ {
+  "file": "branding/burguer-05-sacola.jpg",
+  "cat": "branding",
+  "title": "Aplicação: sacola",
+  "w": 592,
+  "h": 590
+ },
+ {
+  "file": "branding/burguer-06-outdoor.jpg",
+  "cat": "branding",
+  "title": "Aplicação: outdoor",
+  "w": 597,
+  "h": 499
+ },
+ {
+  "file": "branding/burguer-07-copos.jpg",
+  "cat": "branding",
+  "title": "Aplicação: copos",
+  "w": 549,
+  "h": 499
+ },
+ {
+  "file": "branding/burguer-08-camiseta.jpg",
+  "cat": "branding",
+  "title": "Aplicação: camiseta",
+  "w": 592,
+  "h": 499
+ },
+ {
+  "file": "branding/burguer-09-bone.jpg",
+  "cat": "branding",
+  "title": "Aplicação: boné",
+  "w": 1500,
+  "h": 458
+ }
+]

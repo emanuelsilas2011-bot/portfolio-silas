@@ -38,68 +38,65 @@ addEventListener('DOMContentLoaded', () => {
 
   
   // Formulário de orçamento via WhatsApp
-  const f = $('#form');
-  const st = $('#status');
+ const f = $('#form');
+const st = $('#status');
 
-  if (f && st) {
-    const rules = {
-      nome: v => v.trim().length >= 2 || 'Informe seu nome.',
-      email: v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim()) || 'Informe um e-mail válido.',
-      servico: v => !!v || 'Escolha um serviço.',
-      mensagem: v => v.trim().length >= 10 || 'Escreva pelo menos 10 caracteres.'
-    };
+if (f && st) {
+  const rules = {
+    nome: v => v.trim().length >= 2 || 'Informe seu nome.',
+    email: v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim()) || 'Informe um e-mail válido.',
+    servico: v => !!v || 'Escolha um serviço.',
+    mensagem: v => v.trim().length >= 10 || 'Escreva pelo menos 10 caracteres.'
+  };
 
-    const say = (message, type = '') => {
-      st.textContent = message;
-      st.className = type;
-    };
+  const say = (message, type = '') => {
+    st.textContent = message;
+    st.className = type;
+  };
 
-    f.addEventListener('submit', e => {
-      e.preventDefault();
+  f.addEventListener('submit', e => {
+    e.preventDefault();
 
-      let ok = true;
+    let ok = true;
 
-      for (const k in rules) {
-        const el = f.elements[k];
-        const result = rules[k](el.value);
+    for (const k in rules) {
+      const el = f.elements[k];
+      const result = rules[k](el.value);
 
-        $('#e-' + k).textContent = result === true ? '' : result;
-        el.setAttribute('aria-invalid', result !== true);
+      $('#e-' + k).textContent = result === true ? '' : result;
+      el.setAttribute('aria-invalid', result !== true);
 
-        if (result !== true) ok = false;
-      }
+      if (result !== true) ok = false;
+    }
 
-      if (!ok) {
-        say('Revise os campos destacados.', 'err');
-        return;
-      }
+    if (!ok) {
+      say('Revise os campos destacados.', 'err');
+      return;
+    }
 
-      const dados = Object.fromEntries(new FormData(f));
+    const dados = Object.fromEntries(new FormData(f));
 
-      const mensagem = [
-        'Olá! Gostaria de solicitar um orçamento.',
-        '',
-        `Nome: ${dados.nome}`,
-        `E-mail: ${dados.email}`,
-        `Serviço: ${dados.servico}`,
-        '',
-        'Detalhes do projeto:',
-        dados.mensagem
-      ].join('\n');
+    const mensagem = [
+      'Olá! Gostaria de solicitar um orçamento.',
+      '',
+      `Nome: ${dados.nome}`,
+      `E-mail: ${dados.email}`,
+      `Serviço: ${dados.servico}`,
+      '',
+      'Detalhes do projeto:',
+      dados.mensagem
+    ].join('\n');
 
-      const telefone = '5588992287898';
+    const telefone = '5588992287898';
+    const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
-      const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    const novaAba = window.open(url, '_blank');
 
-      say('Abrindo o WhatsApp...', 'ok');
+    if (!novaAba) {
+      say('Não foi possível abrir o WhatsApp. Verifique o bloqueio de pop-ups.', 'err');
+      return;
+    }
 
-      const novaAba = window.open(url, '_blank');
-
-      if (!novaAba) {
-        say('O navegador bloqueou a abertura. Permita pop-ups e tente novamente.', 'err');
-        return;
-      }
-
-      f.reset();
-    });
-  }
+    say('WhatsApp aberto! Confira a mensagem e toque em Enviar.', 'ok');
+  });
+}

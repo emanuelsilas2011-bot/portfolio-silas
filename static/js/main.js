@@ -36,32 +36,70 @@ addEventListener('DOMContentLoaded', () => {
   // botões de serviço preenchem o formulário
   $$('[data-service]').forEach(a => a.addEventListener('click', () => { $('#servico').value = a.dataset.service; }));
 
-  // formulário
-  const f = $('#form'), st = $('#status');
-  const rules = {
-    nome: v => v.trim().length >= 2 || 'Informe seu nome.',
-    email: v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim()) || 'Informe um e-mail válido.',
-    servico: v => !!v || 'Escolha um serviço.',
-    mensagem: v => v.trim().length >= 10 || 'Escreva pelo menos 10 caracteres.'
-  };
-  const say = (t, c = '') => { st.textContent = t; st.className = c; };
-  f.addEventListener('submit', async e => {
-    e.preventDefault();
-    let ok = true;
-    for (const k in rules) {
-      const el = f.elements[k], r = rules[k](el.value);
-      $('#e-' + k).textContent = r === true ? '' : r;
-      el.setAttribute('aria-invalid', r !== true);
-      if (r !== true) ok = false;
-    }
-    if (!ok) return say('Revise os campos destacados.', 'err');
-    const b = $('button[type=submit]', f); b.disabled = true; say('Enviando…');
-    try {
-      const r = await fetch('/contato', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...Object.fromEntries(new FormData(f)), t: Date.now() - t0 }) });
-      const d = await r.json();
-      if (r.ok && d.ok) { f.reset(); say('Mensagem enviada. Respondo em breve.', 'ok'); }
-      else say(d.error || 'Não foi possível enviar. Use o e-mail ou o Instagram.', 'err');
-    } catch { say('Sem conexão. Tente de novo ou use o e-mail.', 'err'); }
-    b.disabled = false;
-  });
-});
+  
+  // Formulário de orçamento via WhatsApp
+  const f = $('#form');
+  const st = $('#status');
+
+  if (f && st) {
+    const rules = {
+      nome: v => v.trim().length >= 2 || 'Informe seu nome.',
+      email: v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim()) || 'Informe um e-mail válido.',
+      servico: v => !!v || 'Escolha um serviço.',
+      mensagem: v => v.trim().length >= 10 || 'Escreva pelo menos 10 caracteres.'
+    };
+
+    const say = (message, type = '') => {
+      st.textContent = message;
+      st.className = type;
+    };
+
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+
+      let ok = true;
+
+      for (const k in rules) {
+        const el = f.elements[k];
+        const result = rules[k](el.value);
+
+        $('#e-' + k).textContent = result === true ? '' : result;
+        el.setAttribute('aria-invalid', result !== true);
+
+        if (result !== true) ok = false;
+      }
+
+      if (!ok) {
+        say('Revise os campos destacados.', 'err');
+        return;
+      }
+
+      const dados = Object.fromEntries(new FormData(f));
+
+      const mensagem = [
+        'Olá! Gostaria de solicitar um orçamento.',
+        '',
+        `Nome: ${dados.nome}`,
+        `E-mail: ${dados.email}`,
+        `Serviço: ${dados.servico}`,
+        '',
+        'Detalhes do projeto:',
+        dados.mensagem
+      ].join('\n');
+
+      const telefone = '5588992287898';
+
+      const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+      say('Abrindo o WhatsApp...', 'ok');
+
+      const novaAba = window.open(url, '_blank');
+
+      if (!novaAba) {
+        say('O navegador bloqueou a abertura. Permita pop-ups e tente novamente.', 'err');
+        return;
+      }
+
+      f.reset();
+    });
+  }

@@ -47,7 +47,7 @@ addEventListener('DOMContentLoaded', () => {
       nome: v => v.trim().length >= 2 || 'Informe seu nome.',
       email: v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim()) || 'Informe um e-mail válido.',
       servico: v => !!v || 'Escolha um serviço.',
-      mensagem: v => v.trim().length >= 10 || 'Escreva pelo menos 10 caracteres.'
+      mensagem: v => true
     };
 
     const say = (message, type = '') => {
@@ -83,9 +83,9 @@ addEventListener('DOMContentLoaded', () => {
         `Nome: ${dados.nome}`,
         `E-mail: ${dados.email}`,
         `Serviço: ${dados.servico}`,
-        '',
-        'Detalhes do projeto:',
-        dados.mensagem
+        ...(dados.mensagem.trim()
+  ? ['', 'Detalhes do projeto:', dados.mensagem.trim()]
+  : [])
       ].join('\n');
 
       const telefone = '5588992287898';

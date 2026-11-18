@@ -28,7 +28,7 @@
   <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="links" aria-label="Abrir menu"><span></span><span></span></button>
   <nav class="nav-links" id="links" aria-label="Principal">
     <a href="#sobre">Sobre</a><a href="#especialidades">Especialidades</a><a href="#portfolio">Portfólio</a>
-    <a href="#servicos">Serviços</a><a href="#processo">Processo</a><a class="btn btn-y" href="#contato">Orçamento</a>
+    <a href="#servicos">Serviços</a><a href="#processo">Processo</a><a class="btn btn-y liquid-btn" href="#contato">Orçamento</a>
   </nav>
 </header>
 
@@ -42,8 +42,8 @@
       <p class="role">{{ s.role }}</p>
       <p class="lead">{{ s.headline }}</p>
       <div class="cta">
-        <a class="btn btn-y" href="#portfolio">Explorar portfólio</a>
-        <a class="btn btn-o" href="#contato">Solicitar orçamento</a>
+        <a class="btn btn-y liquid-btn" href="#portfolio">Explorar portfólio</a>
+        <a class="btn btn-o liquid-btn" href="#contato">Solicitar orçamento</a>
       </div>
     </div>
     <div class="stack" aria-hidden="true">
@@ -103,7 +103,7 @@
     <h2 class="h2 rv">Serviços</h2>
     <ul class="cards">{% for n, d, b in services %}
       <li class="card rv"><h3>{{ n }}</h3><p>{{ d }}</p><p class="gain">{{ b }}</p>
-        <a class="btn btn-y" href="#contato" data-service="{{ n }}">Solicitar orçamento</a></li>{% endfor %}
+<a class="btn btn-y liquid-btn" href="#contato" data-service="{{ n }}">Solicitar orçamento</a></li>{% endfor %}
     </ul>
   </div>
 </section>
@@ -121,7 +121,9 @@
       <h2 class="h2">Vamos criar o seu projeto?</h2>
       <p class="big">Conte o que você precisa. Posts, identidade visual, flyers ou conteúdo para redes: eu respondo pelo canal que preferir.</p>
       <div class="cta">
-        {% if s.whatsapp %}<a class="btn btn-y" href="https://wa.me/{{ s.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>{% endif %}
+        {% if s.whatsapp %}
+<a class="btn btn-y liquid-btn" href="https://wa.me/{{ s.whatsapp }}" target="_blank" rel="noopener">WhatsApp</a>
+{% endif %}
         <a class="btn btn-o" href="https://instagram.com/{{ s.instagram }}" target="_blank" rel="noopener">Instagram @{{ s.instagram }}</a>
         <a class="btn btn-o" href="mailto:{{ s.email }}">{{ s.email }}</a>
       </div>
@@ -135,7 +137,7 @@
 <textarea id="mensagem" name="mensagem" rows="5" maxlength="2000" placeholder="Se tiver alguma observação sobre seu projeto, escreva aqui..."></textarea>
 <small class="e" id="e-mensagem"></small>
       <input class="trap" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn btn-y" type="submit">Enviar mensagem</button>
+      <button class="btn btn-y liquid-btn" type="submit">Enviar mensagem</button> 
       <p id="status" role="status" aria-live="polite"></p>
     </form>
   </div>
